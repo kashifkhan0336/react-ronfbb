@@ -6,7 +6,23 @@ import Button from "@material-ui/core/Button";
 import CreateRoomBtn from "./CreateRoomBtn";
 import JoinRoomBtn from "./JoinRoomBtn";
 import AlertDialog from "./Alert";
-import Header from './Header'
+import Header from "./Header";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import blue from '@material-ui/core/colors/blue';
+export const theme = createMuiTheme({
+  palette: {
+    common: {
+      black: "#000",
+      white: "#fff"
+    },
+    primary: blue,
+    background: {
+      paper: "#fff",
+      default: "#fafafa"
+    }
+  }
+});
 export default function App() {
   const childRef = useRef();
   const useStyles = makeStyles(theme => ({
@@ -22,26 +38,13 @@ export default function App() {
   }));
   return (
     <>
-    <Header></Header>
-      {/*<AppBar>
-        <Toolbar>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6">PartyWatch</Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>*/}
-      <button onClick={() => childRef.current.handleClickOpen()}>Click</button>
-      <AlertDialog ref={childRef} />
-      <CreateRoomBtn />
-      <JoinRoomBtn />
-      <TextField id="outlined-basic" label="Room Name" variant="outlined" />
-      <div>
-        <Button variant="contained" color="primary">
-          Create
-        </Button>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <button onClick={() => childRef.current.handleClickOpen()}>
+          Click
+        </button>
+        <AlertDialog ref={childRef} />
+      </ThemeProvider>
     </>
   );
 }

@@ -20,7 +20,7 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant="contained" color="primary"  onClick={handleClickOpen}>
         Join Room
       </Button>
       <Dialog
