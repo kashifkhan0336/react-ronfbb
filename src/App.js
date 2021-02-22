@@ -6,35 +6,34 @@ import Button from "@material-ui/core/Button";
 import CreateRoomBtn from "./CreateRoomBtn";
 import JoinRoomBtn from "./JoinRoomBtn";
 import AlertDialog from "./Alert";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/icons/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Typography from '@material-ui/core/Typography'
+import Header from './Header'
 export default function App() {
   const childRef = useRef();
   const useStyles = makeStyles(theme => ({
     root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "25ch"
-      }
+      flexGrow: 1
+    },
+    menuButton: {
+      marginRight: theme.spacing(2)
+    },
+    title: {
+      flexGrow: 1
     }
   }));
   return (
     <>
-      <AppBar>
+    <Header></Header>
+      {/*<AppBar>
         <Toolbar>
           <IconButton>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6">
-            PartyWatch
-          </Typography>
+          <Typography variant="h6">PartyWatch</Typography>
+          <Button color="inherit">Login</Button>
         </Toolbar>
-      </AppBar>
+      </AppBar>*/}
       <button onClick={() => childRef.current.handleClickOpen()}>Click</button>
-      <AlertDialog ref={childRef}></AlertDialog>
+      <AlertDialog ref={childRef} />
       <CreateRoomBtn />
       <JoinRoomBtn />
       <TextField id="outlined-basic" label="Room Name" variant="outlined" />
